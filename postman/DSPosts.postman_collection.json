@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "6c788d60-ea8b-49b1-9ec7-fb86922665a3",
+		"name": "DSPosts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "All users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/617d6856d829aa6b8b3be554",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"617d6856d829aa6b8b3be554"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/617d723a50250061eee0a331/posts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"617d723a50250061eee0a331",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ana Red\",\r\n    \"email\": \"ana@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Post by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/posts/617d74e85915003a9f63e26b",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"617d74e85915003a9f63e26b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Title search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/posts/titlesearch?text=partiu viagem",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"titlesearch"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "partiu viagem"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
