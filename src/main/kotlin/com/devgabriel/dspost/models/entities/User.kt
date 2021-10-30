@@ -16,5 +16,5 @@ class User(
      * @DBRef indica que essa lista de post é uma referencia a Posts que estão em outra collection
      */
     @DBRef(lazy = true)
-    val posts = mutableListOf<Post>()
+    var posts = mutableListOf<Post>()
 }
