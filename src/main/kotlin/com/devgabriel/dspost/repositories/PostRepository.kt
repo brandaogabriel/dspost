@@ -4,5 +4,5 @@ import com.devgabriel.dspost.models.entities.Post
 import org.springframework.data.mongodb.repository.MongoRepository
 
 interface PostRepository : MongoRepository<Post, String> {
-    fun findByTitle(title: String): List<Post>
+    fun findByTitleContainingIgnoreCase(title: String): List<Post>
 }

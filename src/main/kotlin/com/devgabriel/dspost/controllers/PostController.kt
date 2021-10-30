@@ -22,7 +22,7 @@ class PostController(
 
     @GetMapping("/titlesearch")
     fun getPostsByTitle(@RequestParam(name = "text", required = true) text: String): ResponseEntity<List<PostResponse>> {
-        val posts = postRepository.findByTitle(text)
+        val posts = postRepository.findByTitleContainingIgnoreCase(text)
         val response = posts.map { post -> PostResponse(post) }
         return ResponseEntity.ok(response)
     }
