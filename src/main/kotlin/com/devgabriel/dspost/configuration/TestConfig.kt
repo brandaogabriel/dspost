@@ -1,6 +1,7 @@
 package com.devgabriel.dspost.configuration
 
 import com.devgabriel.dspost.models.entities.User
+import com.devgabriel.dspost.repositories.PostRepository
 import com.devgabriel.dspost.repositories.UserRepository
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
@@ -9,13 +10,14 @@ import javax.annotation.PostConstruct
 @Configuration
 @Profile("test")
 class TestConfig(
-    val userRepository: UserRepository
+    val userRepository: UserRepository,
+    val postRepository: PostRepository,
 ) {
 
     @PostConstruct
     fun init(): Unit {
-
         userRepository.deleteAll()
+        postRepository.deleteAll()
 
         val bob = User(id = null, name = "Bob Grey", email = "bob@email.com")
         val maria = User(id = null, name = "Maria Brown", email = "maria@email.com")
