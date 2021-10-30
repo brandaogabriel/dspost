@@ -15,6 +15,6 @@ class Post(
     val author: Author
 ) {
 
-    val createdAt = LocalDateTime.now()
-    val comments = mutableListOf<Comment>()
+    var createdAt = LocalDateTime.now()
+    var comments = mutableListOf<Comment>()
 }

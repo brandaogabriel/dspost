@@ -1,7 +1,9 @@
 package com.devgabriel.dspost.controllers
 
+import com.devgabriel.dspost.models.dtos.PostResponse
 import com.devgabriel.dspost.models.dtos.UserRequest
 import com.devgabriel.dspost.models.dtos.UserResponse
+import com.devgabriel.dspost.models.entities.Post
 import com.devgabriel.dspost.repositories.UserRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -39,5 +41,13 @@ class UserController(
         return ResponseEntity.created(location).build()
     }
 
+    @GetMapping("/{id}/posts")
+    fun getUserPosts(@PathVariable id: String): ResponseEntity<List<PostResponse>> {
+        val possibleUser = userRepository.findById(id)
+        if (possibleUser.isEmpty) return ResponseEntity.notFound().build()
 
+        val user = possibleUser.get()
+        val postsResponse = user.posts.map { post -> PostResponse(post) }
+        return ResponseEntity.ok(postsResponse)
+    }
 }
