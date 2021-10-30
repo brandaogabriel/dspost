@@ -6,11 +6,12 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "users")
 class User(
-    @Id
-    var id: String?,
     val name: String,
     val email: String
 ) {
+
+    @Id
+    var id: String? = null
 
     /**
      * @DBRef indica que essa lista de post é uma referencia a Posts que estão em outra collection

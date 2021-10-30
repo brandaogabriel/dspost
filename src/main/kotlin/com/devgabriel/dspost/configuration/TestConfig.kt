@@ -23,9 +23,9 @@ class TestConfig(
         userRepository.deleteAll()
         postRepository.deleteAll()
 
-        val bob = User(id = null, name = "Bob Grey", email = "bob@email.com")
-        val maria = User(id = null, name = "Maria Brown", email = "maria@email.com")
-        val alex = User(id = null, name = "Alex Green", email = "alex@email.com")
+        val bob = User(name = "Bob Grey", email = "bob@email.com")
+        val maria = User(name = "Maria Brown", email = "maria@email.com")
+        val alex = User(name = "Alex Green", email = "alex@email.com")
 
         userRepository.saveAll(mutableListOf(bob, maria, alex))
 

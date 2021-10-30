@@ -1,12 +1,12 @@
 package com.devgabriel.dspost.controllers
 
+import com.devgabriel.dspost.models.dtos.UserRequest
 import com.devgabriel.dspost.models.dtos.UserResponse
 import com.devgabriel.dspost.repositories.UserRepository
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.util.UriComponentsBuilder
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/users")
@@ -29,4 +29,15 @@ class UserController(
         val userResponse = UserResponse(possibleUser.get())
         return ResponseEntity.ok(userResponse)
     }
+
+    @PostMapping
+    fun createUser(@RequestBody @Valid request: UserRequest, builder: UriComponentsBuilder): ResponseEntity<Unit> {
+        val user = request.paraUser()
+        userRepository.save(user)
+
+        val location = builder.path("/users/{id}").buildAndExpand(user.id).toUri()
+        return ResponseEntity.created(location).build()
+    }
+
+
 }
